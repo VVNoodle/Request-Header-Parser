@@ -1,13 +1,19 @@
 var express = require("express");
 var app = express();
-var os = require('os');
+var bodyParser = require("body-parser");
+var cors = require("cors");
+var useragent = require("express-useragent");
 require("dotenv/config");
+
+app.use(bodyParser.json());
+app.use(cors());
+app.use(useragent.express());
 
 app.get('/', (req, res) => {
     res.json({
-        ipaddress: os.networkInterfaces()['Wi-Fi'][0].address,
-        language: req.headers["accept-language"],
-        software: req.headers['user-agent']
+        ipaddress: req.ip, //when using localhost, ip will return ::1
+        language: req.acceptsLanguages()[0],
+        software: `${req.useragent.os}; ${req.useragent.browser}`
     })
 })
 

@@ -18,7 +18,10 @@
   },
   "homepage": "https://github.com/VVNoodle/Request-Header-Parser#readme",
   "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
     "dotenv": "^4.0.0",
-    "express": "^4.16.2"
+    "express": "^4.16.2",
+    "express-useragent": "^1.0.8"
   }
 }
